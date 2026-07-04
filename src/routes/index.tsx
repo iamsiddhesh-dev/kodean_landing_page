@@ -33,7 +33,7 @@ function Landing() {
         {/* <Features /> */}
         <Comparison />
         <MessageSection />
-        <Waitlist />
+        {/* <Waitlist /> */}
       </main>
       <Footer />
     </div>
@@ -44,37 +44,50 @@ function Landing() {
 
 function Navbar() {
   const links = [
-    { label: "Vision", href: "#vision" },
-    { label: "How it Works", href: "#solution" },
-    { label: "Features", href: "#features" },
-    { label: "Message", href: "#message" },
-  ];
+  { label: "Problem", href: "#problem" },
+  { label: "Journey", href: "#journey" },
+  { label: "Why kodean", href: "#comparison" },
+  { label: "Our Belief", href: "#belief" },
+];
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <a href="#" className="flex items-center gap-2">
           <LogoMark />
-          <span className="text-[15px] font-semibold tracking-tight">kodean</span>
+          <span className="text-[15px] font-semibold tracking-tight"><i><b>kodean</b></i></span>
         </a>
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-10 lg:gap-12 md:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="
+relative text-sm text-muted-foreground
+transition-colors duration-200
+hover:text-foreground
+after:absolute
+after:left-0
+after:-bottom-1
+after:h-px
+after:w-0
+after:bg-foreground
+after:transition-all
+after:duration-300
+hover:after:w-full
+"
             >
               {l.label}
             </a>
           ))}
         </nav>
         <a
-          href={WAITLIST_FORM_URL}
+          // href={WAITLIST_FORM_URL}
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-1.5 rounded-full border border-border-strong bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-surface-2"
         >
-          Join Waitlist
+          Start learning with <i><b>kodean</b></i>
           <ArrowRight className="h-3.5 w-3.5" />
         </a>
       </div>
@@ -122,22 +135,22 @@ function Hero() {
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
-              href={WAITLIST_FORM_URL}
+              // href={WAITLIST_FORM_URL}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.02]"
               style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow)" }}
             >
-              Join Waitlist
+              Start learning with <i><b>kodean</b></i>
               <ArrowRight className="h-4 w-4" />
             </a>
-            <a
-              href="#vision"
+            {/* <a
+              href="#problem"
               className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface/60 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface-2"
             >
               See the story
               <ChevronRight className="h-4 w-4" />
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -172,7 +185,7 @@ function ExtensionMockup() {
               className="h-1.5 w-1.5 rounded-full"
               style={{ background: "var(--gradient-brand)" }}
             />
-            kodean
+            <i><b>kodean</b></i>
           </div>
         </div>
 
@@ -213,12 +226,12 @@ function ExtensionMockup() {
               </p>
             </div>
             <a
-              href={WAITLIST_FORM_URL}
+              // href={WAITLIST_FORM_URL}
               target="_blank"
               rel="noreferrer"
               className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-border-strong bg-surface px-3 py-2 text-[12px] font-medium text-foreground transition-colors hover:bg-surface-2"
             >
-              Join waitlist
+              Start learning with <i><b>kodean</b></i>
               <ArrowRight className="h-3 w-3" />
             </a>
           </div>
@@ -290,7 +303,7 @@ const CONVERSATION_SCENES = [
 
 function Problem() {
   return (
-    <section id="vision" className="relative border-t border-border/60 py-16 lg:py-18">
+    <section id="problem" className="relative border-t border-border/60 py-16 lg:py-18">
       <div className="mx-auto max-w-6xl px-6">
         <SectionEyebrow>A Familiar Feeling</SectionEyebrow>
         <h2 className="mt-5 max-w-3xl font-display text-[40px] font-semibold leading-[1.02] tracking-tight sm:text-[52px] lg:text-[56px]">
@@ -453,7 +466,7 @@ function Solution() {
     },
   ];
   return (
-    <section id="solution" className="relative border-t border-border/60 py-16 lg:py-18">
+    <section id="journey" className="relative border-t border-border/60 py-16 lg:py-18">
       <div className="mx-auto max-w-6xl px-6">
         <SectionEyebrow>The Learning Journey</SectionEyebrow>
         <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -494,7 +507,7 @@ function Solution() {
           </ol>
           <div className="mt-2 flex justify-center">
             <a
-              href={WAITLIST_FORM_URL}
+              // href={WAITLIST_FORM_URL}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface-2"
@@ -606,7 +619,7 @@ function Comparison() {
     "Leave the snippet knowing more than when you found it",
   ];
   return (
-    <section className="border-t border-border/60 py-16 lg:py-18">
+    <section id="comparison" className="border-t border-border/60 py-16 lg:py-18">
       <div className="mx-auto max-w-6xl px-6">
         <SectionEyebrow>Why <i><b>kodean</b></i>?</SectionEyebrow>
         <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -675,7 +688,7 @@ Missing context.
 
 function MessageSection() {
   return (
-    <section id="message" className="border-t border-border/60 py-16 lg:py-18">
+    <section id="belief" className="border-t border-border/60 py-16 lg:py-18">
       <div className="mx-auto max-w-6xl px-6">
         <div className="glass-card relative overflow-hidden rounded-3xl p-8 text-center sm:p-12">
           <div
@@ -683,24 +696,21 @@ function MessageSection() {
             className="absolute -right-24 -top-24 h-64 w-64 rounded-full opacity-35 blur-3xl"
             style={{ background: "var(--gradient-brand)" }}
           />
-          <SectionEyebrow center>Brand Message</SectionEyebrow>
+          <SectionEyebrow center>OUR BELIEF</SectionEyebrow>
           <h2 className="mx-auto mt-5 max-w-3xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-            Every line has a reason.
-            <br />
-            kodean helps you discover it.
+            Understanding is the skill that lasts.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-            Understand. Think. Remember. Grow. The future belongs to engineers
-            who can explain their systems, not only ship them.
+            AI will continue to change how we write code. But the ability to understand it, improve it, and explain it will always be what makes a great developer. That's the future we believe in. It's the future we're building <i><b>kodean</b></i> for.
           </p>
           <a
-            href={WAITLIST_FORM_URL}
+            // href={WAITLIST_FORM_URL}
             target="_blank"
             rel="noreferrer"
             className="mt-8 inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.02]"
             style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow)" }}
           >
-            Join waitlist
+            Start learning with <i><b>kodean</b></i>
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>
@@ -712,40 +722,40 @@ function MessageSection() {
 
 /* ---------------------------- WAITLIST ---------------------------- */
 
-function Waitlist() {
-  return (
-    <section id="waitlist" className="border-t border-border/60 py-16 lg:py-18">
-      <div className="mx-auto max-w-3xl px-6">
-        <div className="text-center">
-          <SectionEyebrow center>Early Access</SectionEyebrow>
-          <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-            Understand your code before production teaches you.
-          </h2>
-          <p className="mt-4 text-[17px] text-muted-foreground">
-            Join developers choosing understanding over dependency.
-          </p>
-        </div>
+// function Waitlist() {
+//   return (
+//     <section id="waitlist" className="border-t border-border/60 py-16 lg:py-18">
+//       <div className="mx-auto max-w-3xl px-6">
+//         <div className="text-center">
+//           <SectionEyebrow center>Early Access</SectionEyebrow>
+//           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+//             Understand your code before production teaches you.
+//           </h2>
+//           <p className="mt-4 text-[17px] text-muted-foreground">
+//             Join developers choosing understanding over dependency.
+//           </p>
+//         </div>
 
-        <div className="glass-card mt-10 rounded-2xl p-8 text-center sm:p-10">
-          <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Click below to join the waitlist. We&apos;ll share launch updates and
-            early access details.
-          </p>
-          <a
-            href={WAITLIST_FORM_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.01]"
-            style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow)" }}
-          >
-            Join Waitlist
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
+//         <div className="glass-card mt-10 rounded-2xl p-8 text-center sm:p-10">
+//           <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted-foreground">
+//             Click below to join the waitlist. We&apos;ll share launch updates and
+//             early access details.
+//           </p>
+//           <a
+//             href={WAITLIST_FORM_URL}
+//             target="_blank"
+//             rel="noreferrer"
+//             className="mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.01]"
+//             style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow)" }}
+//           >
+//             Join Waitlist
+//             <ArrowRight className="h-4 w-4" />
+//           </a>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 /* ---------------------------- FOOTER ---------------------------- */
 
@@ -755,11 +765,20 @@ function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row">
         <div className="flex items-center gap-2">
           <LogoMark />
-          <span className="text-sm font-semibold tracking-tight">kodean</span>
+          <span className="text-sm font-semibold tracking-tight">
+            <i><b>kodean</b></i>
+          </span>
         </div>
-        <p className="text-center text-sm text-muted-foreground sm:text-right">
-          Understanding is the ultimate developer tool.
-        </p>
+
+        <div className="text-center sm:text-right">
+          <p className="text-sm text-muted-foreground">
+            <i>Helping developers understand the code they build.</i>
+          </p>
+
+          <p className="mt-2 text-xs text-muted-foreground/70">
+            © {new Date().getFullYear()} <b><i>kodean</i></b>. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
