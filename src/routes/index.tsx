@@ -108,19 +108,17 @@ function Hero() {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            AI writes code. Great engineers understand it.
+            AI builds fast.
+            Clarity builds to last.
           </div>
           <h1 className="mt-5 font-display text-[40px] font-semibold leading-[1.02] tracking-tight sm:text-[52px] lg:text-[62px]">
-            Stop shipping code
+            Stop shipping <span className="text-gradient">AI-generated code</span> you
             <br />
-            you can&apos;t explain.
+            can&apos;t explain.
             <br />
-            <span className="text-gradient">AI-generated code.</span>
           </h1>
           <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
-            AI can build the first draft in seconds. Weeks later, teams still pay
-            the cost of not understanding it. kodean turns generated code into
-            engineering clarity you can defend, extend, and trust.
+            Every developer has copied code they didn't fully understand. It works for now, but when it's time to modify, debug, or explain it, confidence turns into guesswork. <b><i>kodean</i></b> is your AI learning companion, helping you truly understand your code so every project leaves you a more confident engineer.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
@@ -286,15 +284,14 @@ function Problem() {
   return (
     <section id="vision" className="relative border-t border-border/60 py-16 lg:py-18">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionEyebrow>The Problem</SectionEyebrow>
+        <SectionEyebrow>A familiar feeling</SectionEyebrow>
         <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
           Fast shipping feels good.
           <br />
           <span className="text-muted-foreground">Not understanding it doesn&apos;t.</span>
         </h2>
         <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-          The new default workflow is obvious: prompt, paste, move on. The hidden
-          cost appears later, when the code is yours but the reasoning isn&apos;t.
+          The hardest bugs aren't always in the code. Sometimes they're in the parts you never truly understood. That confidence gap grows with every feature you ship.
         </p>
 
         <div className="relative mt-12 grid grid-cols-1 gap-4 before:absolute before:left-4 before:top-3 before:bottom-3 before:w-px before:bg-border/80 lg:grid-cols-2 lg:gap-6 lg:before:left-[50%] lg:before:-translate-x-1/2">
