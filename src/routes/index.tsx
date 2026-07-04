@@ -294,13 +294,12 @@ function Problem() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionEyebrow>A Familiar Feeling</SectionEyebrow>
         <h2 className="mt-5 max-w-3xl font-display text-[40px] font-semibold leading-[1.02] tracking-tight sm:text-[52px] lg:text-[56px]">
-          Shipping is easy.
+          Fast shipping feels good.
           <br />
-          <span className="text-muted-foreground">Owning the code isn&apos;t.</span>
+          <span className="text-muted-foreground">Not understanding it doesn't.</span>
         </h2>
         <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
-          Every developer eventually faces the same moment. The code works—until someone asks you
-          to change it, explain it, or build on top of it. That&apos;s when understanding matters.
+          The hardest bugs aren't always in the code. Sometimes they're in the parts you never truly understood. That confidence gap grows with every feature you ship.
         </p>
 
         <div className="mt-12">
