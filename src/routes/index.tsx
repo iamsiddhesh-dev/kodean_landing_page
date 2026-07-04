@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   BookOpen,
@@ -7,7 +8,6 @@ import {
   ChevronRight,
   Compass,
   FileText,
-  GitBranch,
   Layers,
   Lightbulb,
   PenLine,
@@ -257,82 +257,164 @@ function CodeLine({
 
 /* ---------------------------- PROBLEM ---------------------------- */
 
+const CONVERSATION_SCENES = [
+  {
+    otherSpeaker: "Engineering Manager",
+    otherMessage: "Can you quickly update this function?",
+    selfSpeaker: "You",
+    selfReply: "Sure...",
+    selfRealization: "Wait... I don't actually remember why this works.",
+  },
+  {
+    otherSpeaker: "Interviewer",
+    otherMessage: "Can you explain why you chose this approach?",
+    selfSpeaker: "You",
+    selfReply: "I know it works...",
+    selfRealization: "...but I can't explain why.",
+  },
+  {
+    otherSpeaker: "Professor",
+    otherMessage: "Walk me through your solution.",
+    selfSpeaker: "Student",
+    selfReply: "I wrote it last week...",
+    selfRealization: "I don't remember the logic anymore.",
+  },
+  {
+    otherSpeaker: "Teammate",
+    otherMessage: "Can we extend this feature?",
+    selfSpeaker: "You",
+    selfReply: "We can...",
+    selfRealization: "First I need to understand this part again.",
+  },
+] as const;
+
 function Problem() {
-  const steps = [
-    {
-      label: "AI generated code",
-      desc: "You get a working answer fast and momentum feels great.",
-      icon: Sparkles,
-    },
-    {
-      label: "Copy and ship",
-      desc: "It passes. The feature moves. No time to go deeper.",
-      icon: Layers,
-    },
-    {
-      label: "A few weeks later",
-      desc: "A bug appears. The logic is unfamiliar and fragile.",
-      icon: GitBranch,
-    },
-    {
-      label: "Confidence drops",
-      desc: "\"I can ship this, but I cannot explain it.\"",
-      icon: X,
-      danger: true,
-    },
-  ];
   return (
     <section id="vision" className="relative border-t border-border/60 py-16 lg:py-18">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionEyebrow>A familiar feeling</SectionEyebrow>
-        <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-          Fast shipping feels good.
+        <SectionEyebrow>A Familiar Feeling</SectionEyebrow>
+        <h2 className="mt-5 max-w-3xl font-display text-[40px] font-semibold leading-[1.02] tracking-tight sm:text-[52px] lg:text-[56px]">
+          Shipping is easy.
           <br />
-          <span className="text-muted-foreground">Not understanding it doesn&apos;t.</span>
+          <span className="text-muted-foreground">Owning the code isn&apos;t.</span>
         </h2>
-        <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-          The hardest bugs aren't always in the code. Sometimes they're in the parts you never truly understood. That confidence gap grows with every feature you ship.
+        <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
+          Every developer eventually faces the same moment. The code works—until someone asks you
+          to change it, explain it, or build on top of it. That&apos;s when understanding matters.
         </p>
 
-        <div className="relative mt-12 grid grid-cols-1 gap-4 before:absolute before:left-4 before:top-3 before:bottom-3 before:w-px before:bg-border/80 lg:grid-cols-2 lg:gap-6 lg:before:left-[50%] lg:before:-translate-x-1/2">
-          {steps.map((s, i) => (
-            <div
-              key={s.label}
-              className={`relative pl-10 lg:pl-0 ${
-                i % 2 === 0 ? "lg:pr-12" : "lg:pl-12 lg:pt-12"
-              }`}
-            >
-              <span
-                className={`absolute left-2 top-6 z-10 h-4 w-4 rounded-full border-2 lg:left-auto ${
-                  i % 2 === 0 ? "lg:right-[-8px]" : "lg:left-[-8px]"
-                } ${s.danger ? "border-destructive bg-destructive/20" : "border-primary bg-primary/20"}`}
-              />
-              <div className="glass-card group relative rounded-2xl p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-border-strong hover:bg-surface/70">
-                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border-strong bg-surface-2 text-foreground">
-                  <s.icon className="h-4 w-4" />
-                </div>
-                <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
-                  Step {i + 1}
-                </div>
-                <div className="mt-1 text-base font-semibold text-foreground">
-                  {s.label}
-                </div>
-                <div className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</div>
-              </div>
-            </div>
-          ))}
+        <div className="mt-12">
+          <ConversationCard />
         </div>
 
-        <blockquote className="glass-card mx-auto mt-10 max-w-2xl rounded-2xl p-6 text-center">
-          <p className="font-display text-lg leading-snug text-foreground sm:text-xl">
-            &quot;I shipped this last month. I still can&apos;t explain why it works.&quot;
-          </p>
-          <div className="mt-2 text-xs text-muted-foreground">
-            — every developer who's been honest, at least once
-          </div>
-        </blockquote>
+        <p className="mx-auto mt-12 max-w-3xl text-center font-display text-xl leading-snug text-foreground/90 sm:text-2xl">
+          &quot;Understanding your code shouldn&apos;t begin when someone asks you about it.&quot;
+        </p>
       </div>
     </section>
+  );
+}
+
+function ConversationCard() {
+  const [sceneIndex, setSceneIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const scene = CONVERSATION_SCENES[sceneIndex];
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setVisible(false);
+      window.setTimeout(() => {
+        setSceneIndex((current) => (current + 1) % CONVERSATION_SCENES.length);
+        setVisible(true);
+      }, 320);
+    }, 5500);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="glass-card mx-auto max-w-2xl overflow-hidden rounded-2xl">
+      <div className="flex items-center gap-2 border-b border-border/70 bg-surface/80 px-5 py-3">
+        <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
+        <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
+        <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
+        <span className="ml-2 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+          Messages
+        </span>
+      </div>
+
+      <div className="space-y-5 p-5 sm:p-6">
+        <div className="max-w-[85%]">
+          <div
+            className={`transition-all duration-300 ease-out motion-reduce:transition-none ${
+              visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
+            }`}
+          >
+            <div className="mb-1.5 text-[11px] font-medium text-muted-foreground">
+              {scene.otherSpeaker}
+            </div>
+            <div className="min-h-[52px] rounded-2xl rounded-tl-md border border-border/70 bg-surface/60 px-4 py-3 text-sm leading-relaxed text-foreground/90">
+              {scene.otherMessage}
+            </div>
+          </div>
+        </div>
+
+        <div className="ml-auto max-w-[85%]">
+          <div
+            className={`transition-all duration-300 ease-out motion-reduce:transition-none ${
+              visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
+            }`}
+            style={{ transitionDelay: visible ? "40ms" : "0ms" }}
+          >
+            <div className="mb-1.5 text-right text-[11px] font-medium text-muted-foreground">
+              {scene.selfSpeaker}
+            </div>
+            <div className="min-h-[44px] rounded-2xl rounded-tr-md border border-border/70 bg-surface-2/80 px-4 py-3 text-sm leading-relaxed text-foreground/90">
+              {scene.selfReply}
+            </div>
+          </div>
+        </div>
+
+        <div className="ml-auto max-w-[85%]">
+          <div
+            className={`flex justify-end transition-opacity duration-300 ease-out motion-reduce:transition-none ${
+              visible ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ transitionDelay: visible ? "80ms" : "0ms" }}
+          >
+            <TypingIndicator />
+          </div>
+        </div>
+
+        <div className="ml-auto max-w-[85%]">
+          <div
+            className={`transition-all duration-300 ease-out motion-reduce:transition-none ${
+              visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
+            }`}
+            style={{ transitionDelay: visible ? "120ms" : "0ms" }}
+          >
+            <div className="mb-1.5 text-right text-[11px] font-medium text-muted-foreground">
+              {scene.selfSpeaker}
+            </div>
+            <div className="min-h-[52px] rounded-2xl rounded-tr-md border border-border/70 bg-surface-2/80 px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+              {scene.selfRealization}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TypingIndicator() {
+  return (
+    <span className="inline-flex items-center rounded-full border border-border/60 bg-surface/50 px-3 py-1.5 text-[12px] text-muted-foreground/80">
+      (typing
+      <span aria-hidden className="inline-block w-[1.1em] text-left">
+        ...
+      </span>
+      )
+    </span>
   );
 }
 
