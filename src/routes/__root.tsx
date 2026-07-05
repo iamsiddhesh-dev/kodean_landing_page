@@ -77,11 +77,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "KODEAN — Build Confidence, Not Just Code" },
+      { title: "kodean — Understand AI Code Better"},
       {
         name: "description",
         content:
-          "KODEAN is the AI mentor for developers. Understand, practice, and remember every line of AI-generated code instead of blindly copying it.",
+          "Stop copying. Start understanding. Every line, every time.",
       },
       { name: "author", content: "KODEAN" },
       { property: "og:title", content: "KODEAN — Build Confidence, Not Just Code" },
@@ -101,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      // { rel: "icon", href: "", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
