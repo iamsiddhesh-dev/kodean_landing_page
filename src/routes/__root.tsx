@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Stop copying. Start understanding. Every line, every time.",
       },
       { name: "author", content: "KODEAN" },
-      { property: "og:title", content: "KODEAN — Build Confidence, Not Just Code" },
+      { property: "og:title", content: "kodean — Understand AI Code Better" },
       {
         property: "og:description",
         content:
@@ -92,10 +92,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "KODEAN — Build Confidence, Not Just Code" },
-      { name: "description", content: "Kodean is an AI mentor that helps developers understand AI-generated code." },
-      { property: "og:description", content: "Kodean is an AI mentor that helps developers understand AI-generated code." },
-      { name: "twitter:description", content: "Kodean is an AI mentor that helps developers understand AI-generated code." },
+      { name: "twitter:title", content: "kodean — Understand AI Code Better" },
+      { name: "description", content: "Stop copying. Start understanding. Every line, every time." },
+      { property: "og:description", content: "Stop copying. Start understanding. Every line, every time."},
+      { name: "twitter:description", content: "Stop copying. Start understanding. Every line, every time." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0157171e-8955-4653-b525-abacfeb8a365/id-preview-ba1cf2e9--f5610523-b971-4bbe-8594-a3a45cfbcb2a.lovable.app-1782964781853.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0157171e-8955-4653-b525-abacfeb8a365/id-preview-ba1cf2e9--f5610523-b971-4bbe-8594-a3a45cfbcb2a.lovable.app-1782964781853.png" },
     ],
