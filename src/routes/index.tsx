@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   ArrowRight,
+  Menu,
   BookOpen,
   Brain,
   Check,
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/")({
   component: Landing,
 });
 
-// const WAITLIST_FORM_URL = "https://forms.gle/zBMqzP7ozLRUoHj89";
+const WAITLIST_FORM_URL = "https://forms.gle/zBMqzP7ozLRUoHj89";
 
 function Landing() {
   return (
@@ -43,54 +44,108 @@ function Landing() {
 /* ---------------------------- NAV ---------------------------- */
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
   const links = [
-  { label: "Problem", href: "#problem" },
-  { label: "Journey", href: "#journey" },
-  { label: "Why kodean", href: "#comparison" },
-  { label: "Our Belief", href: "#belief" },
-];
+    { label: "Problem", href: "#problem" },
+    { label: "Journey", href: "#journey" },
+    { label: "Why kodean", href: "#comparison" },
+    { label: "Our Belief", href: "#belief" },
+    {
+      label: "Feedback",
+      href: "https://forms.gle/zBMqzP7ozLRUoHj89",
+    },
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+
+        {/* Logo */}
         <a href="#" className="flex items-center gap-2">
           <LogoMark />
-          <span className="text-[15px] font-semibold tracking-tight"><i><b>kodean</b></i></span>
+          <span className="text-[15px] font-semibold tracking-tight">
+            <i><b>kodean</b></i>
+          </span>
         </a>
-        <nav className="hidden items-center gap-10 lg:gap-12 md:flex">
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-10 lg:gap-12">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
+              target={l.href.startsWith("http") ? "_blank" : undefined}
+              rel={l.href.startsWith("http") ? "noreferrer" : undefined}
               className="
-relative text-sm text-muted-foreground
-transition-colors duration-200
-hover:text-foreground
-after:absolute
-after:left-0
-after:-bottom-1
-after:h-px
-after:w-0
-after:bg-foreground
-after:transition-all
-after:duration-300
-hover:after:w-full
-"
+              relative text-sm text-muted-foreground
+              transition-colors duration-200
+              hover:text-foreground
+              after:absolute
+              after:left-0
+              after:-bottom-1
+              after:h-px
+              after:w-0
+              after:bg-foreground
+              after:transition-all
+              after:duration-300
+              hover:after:w-full
+              "
             >
               {l.label}
             </a>
           ))}
         </nav>
+
+        {/* Desktop Button */}
         <a
           href="/kodean-extension-v1.zip"
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-full border border-border-strong bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-surface-2"
+          className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-border-strong bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-surface-2"
         >
           Start learning with <i><b>kodean</b></i>
           <ArrowRight className="h-3.5 w-3.5" />
         </a>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden"
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden border-t border-border/60 bg-background px-6 py-5 space-y-4">
+
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              target={l.href.startsWith("http") ? "_blank" : undefined}
+              rel={l.href.startsWith("http") ? "noreferrer" : undefined}
+              className="block text-muted-foreground hover:text-foreground"
+              onClick={() => setOpen(false)}
+            >
+              {l.label}
+            </a>
+          ))}
+
+          <a
+            href="/kodean-extension-v1.zip"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-border-strong bg-surface px-4 py-3 text-sm font-medium"
+          >
+            Start learning with <i><b>kodean</b></i>
+            <ArrowRight className="h-4 w-4" />
+          </a>
+
+        </div>
+      )}
     </header>
   );
 }
