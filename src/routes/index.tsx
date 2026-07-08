@@ -97,7 +97,7 @@ function Navbar() {
 
         {/* Desktop Button */}
         <a
-          href="https://github.com/iamsiddhesh-dev/kodean-extension/releases/tag/v1.0.0"
+          href="https://github.com/iamsiddhesh-dev/download-kodean-extension/releases/tag/v1.0.0"
           target="_blank"
           rel="noreferrer"
           className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-border-strong bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-surface-2"
@@ -133,7 +133,7 @@ function Navbar() {
           ))}
 
           <a
-            href="https://github.com/iamsiddhesh-dev/kodean-extension/releases/tag/v1.0.0"
+            href="https://github.com/iamsiddhesh-dev/download-kodean-extension/releases/tag/v1.0.0"
             target="_blank"
             rel="noreferrer"
             className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-border-strong bg-surface px-4 py-3 text-sm font-medium"
@@ -188,7 +188,7 @@ function Hero() {
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
-              href="https://github.com/iamsiddhesh-dev/kodean-extension/releases/tag/v1.0.0"
+              href="https://github.com/iamsiddhesh-dev/download-kodean-extension/releases/tag/v1.0.0"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.02]"
@@ -279,7 +279,7 @@ function ExtensionMockup() {
               </p>
             </div>
             <a
-              href="https://github.com/iamsiddhesh-dev/kodean-extension/releases/tag/v1.0.0"
+              href="https://github.com/iamsiddhesh-dev/download-kodean-extension/releases/tag/v1.0.0"
               target="_blank"
               rel="noreferrer"
               className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-border-strong bg-surface px-3 py-2 text-[12px] font-medium text-foreground transition-colors hover:bg-surface-2"
@@ -560,7 +560,7 @@ function Solution() {
           </ol>
           <div className="mt-2 flex justify-center">
             <a
-              href="https://github.com/iamsiddhesh-dev/kodean-extension/releases/tag/v1.0.0"
+              href="https://github.com/iamsiddhesh-dev/download-kodean-extension/releases/tag/v1.0.0"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface-2"
@@ -757,7 +757,7 @@ function MessageSection() {
             AI will continue to change how we write code. But the ability to understand it, improve it, and explain it will always be what makes a great developer. That's the future we believe in. It's the future we're building <i><b>kodean</b></i> for.
           </p>
           <a
-            href="https://github.com/iamsiddhesh-dev/kodean-extension/releases/tag/v1.0.0"
+            href="https://github.com/iamsiddhesh-dev/download-kodean-extension/releases/tag/v1.0.0"
             target="_blank"
             rel="noreferrer"
             className="mt-8 inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.02]"
